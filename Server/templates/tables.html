@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Tables</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h1>Table List</h1>
+    <table>
+        <tr>
+            <th>Table ID</th>
+            <th>Total People</th>
+            <th>Actions</th>
+        </tr>
+        {% for table in tables %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ table.table_id }}</td>
+            <td>{{ table.total_people }}</td>
+            <td>
+                <a href="/tables/edit/{{ table.table_id }}">Edit</a>
+                <form action="/tables/delete/{{ table.table_id }}" method="post" style="display:inline;">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Add New Table</h2>
+    <form action="/tables" method="post">
+        <input type="number" name="total_people" placeholder="Total People" required>
+        <input type="submit" value="Add Table">
+    </form>
+
+    <a href="/">Back to Home</a>
+</body>
+</html>

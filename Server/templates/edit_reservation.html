@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Reservation</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h1>Edit Reservation</h1>
+    <form action="{{ url_for('edit_reservation', reservation_id=reservation.id) }}" method="post">
+        <label for="customer_name">Customer Name:</label>
+        <input type="text" name="customer_name" value="{{ reservation.customer_name }}" required><br>
+
+        <label for="table_id">Table ID:</label>
+        <input type="number" name="table_id" value="{{ reservation.table_id }}" required><br>
+
+        <label for="reservation_time">Reservation Time:</label>
+        <input type="datetime-local" name="reservation_time" value="{{ reservation.reservation_time }}" required><br>
+
+        <input type="submit" value="Update Reservation">
+    </form>
+    <a href="/reservation">Back to Reservation List</a>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Item Revenue</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h1>Menu Item Revenue</h1>
+
+    <!-- Form to input the menuItemID -->
+    <form method="POST" action="/menu_item_revenue">
+        <label for="menu_item_id">Enter Menu Item ID:</label>
+        <input type="number" id="menu_item_id" name="menu_item_id" required>
+        <button type="submit">Get Revenue</button>
+    </form>
+
+    <!-- Display the revenue result if available -->
+    {% if revenue is not none %}
+        <h2>Revenue for Menu Item ID: {{ menu_item_id }}</h2>
+        <p>Total Revenue: Rs{{ revenue }}</p>
+    {% endif %}
+
+    <!-- Back to home link -->
+    <a href="/">Back to Home</a>
+</body>
+</html>

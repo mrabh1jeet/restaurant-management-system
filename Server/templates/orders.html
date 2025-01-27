@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Orders</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h1>Order List</h1>
+    <table border="1">
+        <tr>
+            <th>Order ID</th>
+            <th>Customer ID</th>
+            <th>Item ID</th>
+            <th>Quantity</th>
+            <th>Actions</th>
+        </tr>
+        {% for order in orders %}
+        <tr>
+            <td>{{ order.order_id }}</td>
+            <td>{{ order.customer_id }}</td>
+            <td>{{ order.item_id }}</td>
+            <td>{{ order.quantity }}</td>
+            <td>
+                <a href="/orders/edit/{{ order.order_id }}">Edit</a>
+                <form action="/orders/delete/{{ order.order_id }}" method="POST" style="display:inline;">
+                    <input type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete this order?')">
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Add New Order</h2>
+    <form action="/orders" method="POST">
+        <input type="number" name="customer_id" placeholder="Customer ID" required>
+        <input type="number" name="item_id" placeholder="Item ID" required>
+        <input type="number" name="quantity" placeholder="Quantity" required>
+        <input type="submit" value="Add Order">
+    </form>
+
+    <a href="/">Back to Home</a>
+</body>
+</html>

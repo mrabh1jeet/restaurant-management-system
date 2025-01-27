@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Customer Feedback</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Back to Home</a></li>
+                <li><a href="/items">Menu</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+                <li><a href="/kitchen">Kitchen</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>We Value Your Feedback</h2>
+        <form action="/feedback" method="post"> <!-- Updated to match Flask route -->
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="rating">Rating:</label>
+            <select id="rating" name="rating" required>
+                <option value="1">1 - Poor</option>
+                <option value="2">2 - Fair</option>
+                <option value="3">3 - Good</option>
+                <option value="4">4 - Very Good</option>
+                <option value="5">5 - Excellent</option>
+            </select>
+            
+            <label for="comments">Comments:</label>
+            <textarea id="comments" name="comments" required></textarea>
+            
+            <input type="submit" value="Submit Feedback">
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2024 Our Restaurant. All rights reserved.</p>
+    </footer>
+</body>
+</html>
